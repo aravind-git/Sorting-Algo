@@ -39,13 +39,13 @@ public class Quicksort {
             randomIntegers[i] = rand.nextInt(100);
         }
         System.out.println("Before");
-        for (int i = 0; i < randomIntegers.length; i++) {
-            System.out.print(" "+randomIntegers[i]);
+        for (int i: randomIntegers) {
+            System.out.print(" "+i);
         }
         quickSort(randomIntegers, 0, randomIntegers.length - 1);
         System.out.println("After");
-        for (int i = 0; i < randomIntegers.length; i++) {
-            System.out.print(" "+randomIntegers[i]);
+        for (int i: randomIntegers) {
+            System.out.print(" "+i);
         }
     }
 }
