@@ -4,13 +4,21 @@ import java.util.Random;
 
 public class Quicksort {
     public static void quickSort(int[] arr, int lowIndex, int highIndex) {
-        int pivot = arr[highIndex];
+        //int pivot = arr[highIndex];
 
         int leftPointer = lowIndex;
         int rightPointer = highIndex;
         if(leftPointer >= rightPointer){
             return;
         }
+        //Choosing a Pivot has a impact on Average Case.
+        // We are randomly the choosing the pivot and doing the sorting
+
+        int pivotIndex = new Random().nextInt(highIndex - lowIndex) + lowIndex;
+        int pivot = arr[pivotIndex];
+        swap(arr, pivotIndex, highIndex);
+        //If the left side is greater move the index
+        //If the right side is lesser increase the index
         while (leftPointer < rightPointer) {
             while (arr[leftPointer] <= pivot && leftPointer < rightPointer) {
                 leftPointer++;
@@ -19,9 +27,12 @@ public class Quicksort {
             while (arr[rightPointer] >= pivot && leftPointer < rightPointer) {
                 rightPointer--;
             }
+        //The left index will be in a position where the number is large and right index will be in position where the number is large. Swap each other
         swap(arr,leftPointer,rightPointer);
         }
+        //Swap the last element which is higher with the leftpointer.
         swap(arr,leftPointer,highIndex);
+        //Sort the left half and right half separately
         quickSort(arr,lowIndex,leftPointer -1 );
         quickSort(arr,leftPointer+1, highIndex);
     }
